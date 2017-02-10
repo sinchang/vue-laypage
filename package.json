@@ -1,0 +1,31 @@
+{
+  "name": "vue-laypage",
+  "version": "1.0.0",
+  "description": "A simple pagination component for Vue.js",
+  "main": "dist/vueLaypage.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
+    "hmr": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
+    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinchang/vue-laypage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sinchang/vue-laypage/issues"
+  },
+  "keywords": [
+    "vue",
+    "pagination",
+    "laypage"
+  ],
+  "author": "sinchang <sinchangwen@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "laravel-mix": "^0.7.2",
+    "vue": "^2.1.10"
+  },
+  "dependencies": {}
+}
