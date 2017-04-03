@@ -1,3 +1,11 @@
-import Laypage from './Laypage.vue';
+import Laypage from './Laypage.vue'
 
-export default Laypage;
+Laypage.install = Vue => {
+  Vue.component(Laypage.name, Laypage)
+}
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Laypage)
+}
+
+export default Laypage

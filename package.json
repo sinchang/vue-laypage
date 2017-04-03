@@ -1,6 +1,6 @@
 {
   "name": "vue-laypage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple pagination component for Vue.js",
   "main": "dist/vueLaypage.js",
   "scripts": {
@@ -24,8 +24,9 @@
   "author": "sinchang <sinchangwen@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "laravel-mix": "^0.7.2",
-    "vue": "^2.1.10"
+    "laravel-mix": "^0.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.1.10"
+  }
 }

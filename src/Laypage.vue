@@ -62,47 +62,52 @@
     },
     computed: {
       pagesNumber() {
-        let from, to;
-        let diff = (this.groups - 1) / 2;
+        let from, to
+        let diff = (this.groups - 1) / 2
+
+        if (this.groups > this.pages) {
+          throw new Error('groups can not greater than pages')
+        }
+
         if (this.diff % 2 === 0) {
-          from = this.cur - diff;
-          to = this.cur + diff;
+          from = this.cur - diff
+          to = this.cur + diff
         } else {
-          from = this.cur - Math.floor(diff);
-          to = this.cur + Math.ceil(diff);
+          from = this.cur - Math.floor(diff)
+          to = this.cur + Math.ceil(diff)
         }
 
         if (from < 1) {
-          from = 1;
-          to = this.groups;
+          from = 1
+          to = this.groups
         }
 
         if (to >= this.pages) {
-          to = this.pages;
-          from = to - this.groups + 1;
+          to = this.pages
+          from = to - this.groups + 1
         }
 
-        let pagesArr = [];
+        let pagesArr = []
 
         while (from <= to) {
-          pagesArr.push(from);
-          from++;
+          pagesArr.push(from)
+          from++
         }
 
-        return pagesArr;
+        return pagesArr
       }
     },
     methods: {
       changePage(page) {
-        this.cur = page;
-        this.jump(page);
+        this.cur = page
+        this.jump(page)
       },
       jumpFunc() {
         if (!this.jumpPage) {
-          return;
+          return
         }
-        this.changePage(parseInt(this.jumpPage));
-        this.jumpPage = '';
+        this.changePage(parseInt(this.jumpPage))
+        this.jumpPage = ''
       }
     }
   }

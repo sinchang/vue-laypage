@@ -12,8 +12,6 @@
 </template>
 
 <script>
-  import Laypage from '../src/Laypage';
-
   export default {
     name: 'app',
     data() {
@@ -27,12 +25,9 @@
         next: false
       }
     },
-    components: {
-      Laypage
-    },
     methods: {
       cb(page) {
-        this.page = page;
+        this.page = page
       }
     }
   }

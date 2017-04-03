@@ -9,7 +9,7 @@ $ npm install vue-laypage --save
 ```
 
 ```
-import Laypage from 'vue-laypage';
+import Laypage from 'vue-laypage'
 export default {
   components: {
     Laypage
@@ -20,9 +20,10 @@ export default {
 or
 
 ```
-import Vue from 'vue';
-import Laypage from 'vue-laypage';
-Vue.component('Laypage', Laypage);
+import Vue from 'vue'
+import Laypage from 'vue-laypage'
+
+Vue.use(Laypage)
 ```
 ## Props
 | Name | Type | Description |
