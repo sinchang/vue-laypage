@@ -7,11 +7,12 @@
     <laypage :pages="50" :jump="cb" :groups="5" :first="first" :last="last" class="laypage"></laypage>
     <laypage :pages="50" :jump="cb" :groups="5" :prev="prev" :next="next" class="laypage"></laypage>
     <laypage :pages="50" :jump="cb" :groups="0" class="laypage"></laypage>
-    <a href="https://github.com/sinchang/vue-laypage/blob/master/demo/App.vue" target="_blank">source code</a>
+    <a href="https://github.com/sinchang/vue-laypage/blob/master/example/App.vue" target="_blank">source code</a>
   </div>
 </template>
 
 <script>
+  // import Laypage from '../src/Laypage.vue'
   export default {
     name: 'app',
     data() {
@@ -29,7 +30,10 @@
       cb(page) {
         this.page = page
       }
-    }
+    },
+    // components: {
+    //   Laypage
+    // }
   }
 </script>
 

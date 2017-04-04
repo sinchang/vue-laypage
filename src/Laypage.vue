@@ -20,7 +20,7 @@
     data() {
       return {
         cur: 1,
-        jumpPage: '',
+        jumpPage: ''
       }
     },
     props: {
@@ -62,8 +62,9 @@
     },
     computed: {
       pagesNumber() {
-        let from, to
-        let diff = (this.groups - 1) / 2
+        let from
+        let to
+        const diff = (this.groups - 1) / 2
 
         if (this.groups > this.pages) {
           throw new Error('groups can not greater than pages')
@@ -87,7 +88,7 @@
           from = to - this.groups + 1
         }
 
-        let pagesArr = []
+        const pagesArr = []
 
         while (from <= to) {
           pagesArr.push(from)
@@ -103,10 +104,8 @@
         this.jump(page)
       },
       jumpFunc() {
-        if (!this.jumpPage) {
-          return
-        }
-        this.changePage(parseInt(this.jumpPage))
+        if (!this.jumpPage) return
+        this.changePage(parseInt(this.jumpPage, 10))
         this.jumpPage = ''
       }
     }
@@ -114,6 +113,6 @@
 
 </script>
 
-<style>
+<style scoped>
   @import "./laypage.css";
 </style>
