@@ -2,6 +2,10 @@
 
 > A simple pagination component for Vue.js, Based on [layPage](http://laypage.layui.com/)
 
+[![NPM version](https://img.shields.io/npm/v/vue-laypage.svg?style=flat)](https://npmjs.com/package/vue-laypage) 
+[![Vue 2.x](https://img.shields.io/badge/Vue-2.x-brightgreen.svg)](https://vuejs.org/v2/guide/)
+[![NPM downloads](https://img.shields.io/npm/dm/vue-laypage.svg?style=flat)](https://npmjs.com/package/vue-laypage) 
+
 ## Installation and Use
 
 ```
