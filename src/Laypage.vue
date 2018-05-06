@@ -1,10 +1,10 @@
 <template>
   <div class="laypage_main laypageskin_default">
-    <a href="javascript:;" class="laypage_prev" v-if="cur > 1 && prev" v-on:click.prevent="changePage(cur - 1)">{{prev}}</a>
-    <a href="javascript:;" class="laypage_first" v-on:click.prevent="changePage(1)" v-if="first && pagesNumber[0] > 1">{{first}}</a>
-    <a href="javascript:;" v-for="page in pagesNumber" :style="[page === cur ? {color: '#fff', backgroundColor: skin} : '']" v-on:click.prevent="changePage(page)">{{ page }}</a>
-    <a href="javascript:;" class="laypage_last" v-on:click.prevent="changePage(pages)" v-if="last && pagesNumber[0] <= pages - groups">{{last}}</a>
-    <a href="javascript:;" class="laypage_next" v-on:click.prevent="changePage(cur + 1)" v-if="cur < pages && next">{{next}}</a>
+    <a href="javascript:;" class="laypage_prev" v-if="cur > 1 && prev" :click.prevent="changePage(cur - 1)">{{prev}}</a>
+    <a href="javascript:;" class="laypage_first" :click.prevent="changePage(1)" v-if="first && pagesNumber[0] > 1">{{first}}</a>
+    <a href="javascript:;" v-for="page in pagesNumber" :style="[page === cur ? {color: '#fff', backgroundColor: skin, borderColor: skin} : '']" v-on:click.prevent="changePage(page)">{{ page }}</a>
+    <a href="javascript:;" class="laypage_last" :click.prevent="changePage(pages)" v-if="last && pagesNumber[0] <= pages - groups">{{last}}</a>
+    <a href="javascript:;" class="laypage_next" :click.prevent="changePage(cur + 1)" v-if="cur < pages && next">{{next}}</a>
     <span class="laypage_total" v-if="skip">
       <label>到第</label>
       <input type="number" min="1" onkeyup="this.value=this.value.replace(/\D/, '');" class="laypage_skip" v-model="jumpPage">
