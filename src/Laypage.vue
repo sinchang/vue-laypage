@@ -1,10 +1,10 @@
 <template>
   <div class="laypage_main laypageskin_default">
-    <a href="javascript:;" class="laypage_prev" v-if="cur > 1 && prev" :click.prevent="changePage(cur - 1)">{{prev}}</a>
-    <a href="javascript:;" class="laypage_first" :click.prevent="changePage(1)" v-if="first && pagesNumber[0] > 1">{{first}}</a>
-    <a href="javascript:;" v-for="page in pagesNumber" :style="[page === cur ? {color: '#fff', backgroundColor: skin, borderColor: skin} : '']" v-on:click.prevent="changePage(page)">{{ page }}</a>
-    <a href="javascript:;" class="laypage_last" :click.prevent="changePage(pages)" v-if="last && pagesNumber[0] <= pages - groups">{{last}}</a>
-    <a href="javascript:;" class="laypage_next" :click.prevent="changePage(cur + 1)" v-if="cur < pages && next">{{next}}</a>
+    <a href="javascript:;" class="laypage_prev" v-if="cur > 1 && prev" @click.prevent="changePage(cur - 1)">{{prev}}</a>
+    <a href="javascript:;" class="laypage_first" @click.prevent="changePage(1)" v-if="first && pagesNumber[0] > 1">{{first}}</a>
+    <a href="javascript:;" v-for="(page, index) in pagesNumber" :key="index" :style="[page === cur ? {color: '#fff', backgroundColor: skin, borderColor: skin} : '']" @click.prevent="changePage(page)">{{ page }}</a>
+    <a href="javascript:;" class="laypage_last" @click.prevent="changePage(pages)" v-if="last && pagesNumber[0] <= pages - groups">{{last}}</a>
+    <a href="javascript:;" class="laypage_next" @click.prevent="changePage(cur + 1)" v-if="cur < pages && next">{{next}}</a>
     <span class="laypage_total" v-if="skip">
       <label>到第</label>
       <input type="number" min="1" onkeyup="this.value=this.value.replace(/\D/, '');" class="laypage_skip" v-model="jumpPage">
@@ -15,104 +15,99 @@
 </template>
 
 <script>
-  export default {
-    name: 'laypage',
-    data() {
-      return {
-        cur: 1,
-        jumpPage: ''
-      }
+export default {
+  name: 'laypage',
+  data() {
+    return {
+      cur: 1,
+      jumpPage: ''
+    }
+  },
+  props: {
+    pages: {
+      required: true,
+      type: Number
     },
-    props: {
-      pages: {
-        required: true,
-        type: Number
-      },
-      groups: {
-        type: Number,
-        default: 5
-      },
-      skin: {
-        type: String,
-        default: '#42b983'
-      },
-      first: {
-        type: [String, Number, Boolean],
-        default: '首页'
-      },
-      last: {
-        type: [String, Number, Boolean],
-        default: '尾页'
-      },
-      prev: {
-        type: [String, Boolean],
-        default: '上一页'
-      },
-      next: {
-        type: [String, Boolean],
-        default: '下一页'
-      },
-      skip: {
-        type: Boolean,
-        default: false
-      },
-      jump: {
-        type: Function
-      }
+    groups: {
+      type: Number,
+      default: 5
     },
-    computed: {
-      pagesNumber() {
-        let from
-        let to
-        const diff = (this.groups - 1) / 2
-
-        if (this.groups > this.pages) {
-          throw new Error('groups can not greater than pages')
-        }
-
-        if (this.diff % 2 === 0) {
-          from = this.cur - diff
-          to = this.cur + diff
-        } else {
-          from = this.cur - Math.floor(diff)
-          to = this.cur + Math.ceil(diff)
-        }
-
-        if (from < 1) {
-          from = 1
-          to = this.groups
-        }
-
-        if (to >= this.pages) {
-          to = this.pages
-          from = to - this.groups + 1
-        }
-
-        const pagesArr = []
-
-        while (from <= to) {
-          pagesArr.push(from)
-          from++
-        }
-
-        return pagesArr
-      }
+    skin: {
+      type: String,
+      default: '#42b983'
     },
-    methods: {
-      changePage(page) {
-        this.cur = page
-        this.jump(page)
-      },
-      jumpFunc() {
-        if (!this.jumpPage) return
-        this.changePage(parseInt(this.jumpPage, 10))
-        this.jumpPage = ''
+    first: {
+      type: [String, Number, Boolean],
+      default: '首页'
+    },
+    last: {
+      type: [String, Number, Boolean],
+      default: '尾页'
+    },
+    prev: {
+      type: [String, Boolean],
+      default: '上一页'
+    },
+    next: {
+      type: [String, Boolean],
+      default: '下一页'
+    },
+    skip: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    pagesNumber() {
+      let from
+      let to
+      const diff = (this.groups - 1) / 2
+
+      if (this.groups > this.pages) {
+        throw new Error('groups can not greater than pages')
       }
+
+      if (this.diff % 2 === 0) {
+        from = this.cur - diff
+        to = this.cur + diff
+      } else {
+        from = this.cur - Math.floor(diff)
+        to = this.cur + Math.ceil(diff)
+      }
+
+      if (from < 1) {
+        from = 1
+        to = this.groups
+      }
+
+      if (to >= this.pages) {
+        to = this.pages
+        from = to - this.groups + 1
+      }
+
+      const pagesArr = []
+
+      while (from <= to) {
+        pagesArr.push(from)
+        from++
+      }
+
+      return pagesArr
+    }
+  },
+  methods: {
+    changePage(page) {
+      if (page > this.pages) return
+      this.cur = page
+      this.$emit('jump', page)
+    },
+    jumpFunc() {
+      if (!this.jumpPage) return
+      this.changePage(parseInt(this.jumpPage, 10))
+      this.jumpPage = ''
     }
   }
-
+}
 </script>
 
-<style scoped>
-  @import "./laypage.css";
-</style>
+<style src="./laypage.css"></style>
