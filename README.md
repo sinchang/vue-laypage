@@ -14,6 +14,8 @@ $ npm install vue-laypage --save
 
 ```
 import Laypage from 'vue-laypage'
+import 'vue-laypage/vue-laypage.css'
+
 export default {
   components: {
     Laypage
@@ -26,6 +28,7 @@ or
 ```
 import Vue from 'vue'
 import Laypage from 'vue-laypage'
+import 'vue-laypage/vue-laypage.css'
 
 Vue.use(Laypage)
 ```

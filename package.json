@@ -1,7 +1,7 @@
 {
   "name": "vue-laypage",
   "description": "A simple pagination component for Vue.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/vue-laypage.cjs.js",
   "module": "dist/vue-laypage.es.js",
   "files": ["dist"],
