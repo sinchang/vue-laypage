@@ -1,12 +1,12 @@
 <template>
   <div>
-    <laypage :pages="50" :jump="cb" :groups="5" class="laypage"></laypage>
+    <laypage :pages="50" @jump="cb" :groups="5" class="laypage"></laypage>
     <input type="text" v-model="page">
-    <laypage :pages="50" :jump="cb" :groups="5" skip="skip" class="laypage"></laypage>
-    <laypage :pages="50" :jump="cb" :groups="5" :skin="skin" class="laypage"></laypage>
-    <laypage :pages="50" :jump="cb" :groups="5" :first="first" :last="last" class="laypage"></laypage>
-    <laypage :pages="50" :jump="cb" :groups="5" :prev="prev" :next="next" class="laypage"></laypage>
-    <laypage :pages="50" :jump="cb" :groups="0" class="laypage"></laypage>
+    <laypage :pages="50" @jump="cb" :groups="5" skip="skip" class="laypage"></laypage>
+    <laypage :pages="50" @jump="cb" :groups="5" :skin="skin" class="laypage"></laypage>
+    <laypage :pages="50" @jump="cb" :groups="5" :first="first" :last="last" class="laypage"></laypage>
+    <laypage :pages="50" @jump="cb" :groups="5" :prev="prev" :next="next" class="laypage"></laypage>
+    <laypage :pages="50" @jump="cb" :groups="0" class="laypage"></laypage>
     <a href="https://github.com/sinchang/vue-laypage/blob/master/example/App.vue" target="_blank">source code</a>
   </div>
 </template>
